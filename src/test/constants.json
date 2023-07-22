@@ -1,0 +1,6 @@
+{
+    "data_root": "datasets",
+    "log_root": "debug/logs",
+    "resume_root": "logs",
+    "num_epochs": 3
+}

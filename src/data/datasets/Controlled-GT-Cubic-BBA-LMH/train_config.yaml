@@ -1,0 +1,38 @@
+---
+# Pass this file alongwith path to the input directory.
+
+# Dataset
+suffix: Controlled-GT-Cubic-BBA-LMH
+train: full.json
+valid: full.json
+test: full.json
+
+# Video session parameters:
+capacity_max: 8.0
+capacity_unit: 0.5
+transition_unit: 5.0
+
+# General parameters for the model
+seed: 42
+device: cpu
+num_epochs: 25
+jit: true
+
+# HMM model parameters:
+initial: generic
+transition: gaussian.asym
+emission: v10
+initeta: 0
+transeta: 0.1
+vareta: 0.0001
+smooth: 0.05
+include_beyond: true
+trans_extra: 5
+
+# Domain emission model parameters:
+varinit: 0.0625
+head_by_chunk: 5
+head_by_time: 5
+varmax_head: 1
+varmax_rest: 0.25
+
