@@ -11,7 +11,17 @@ obtained, we can now directly evaluate the proposed changes, and return the answ
 than a single point estimate, Veritas provides a range of potential outcomes reflecting the inherent uncertainty in inferences 
 that can be made from the data.
 
-This artifact accompanies the paper: Chandan Bothra, Jianfei Gao, Sanjay Rao, and Bruno Ribeiro. Veritas: Answering Causal Queries from Video Streaming Traces, ACM SIGCOMM 2023. Please cite this paper if you use the artifact.
+This artifact accompanies the paper: *"Veritas: Answering Causal Queries from Video Streaming Traces"*. Chandan Bothra, Jianfei Gao, Sanjay Rao, and Bruno Ribeiro. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM ’23, New York, NY, USA. If you use this artifact, please cite:
+
+@inproceedings{Veritas_2023,
+  author    = {Bothra, Chandan and Gao, Jianfei and Rao, Sanjay and Ribeiro, Bruno},
+  title     = {Veritas: Answering Causal Queries from Video Streaming Traces},
+  year      = {2023},
+  url       = {https://doi.org/10.1145/3603269.3604828},
+  doi       = {10.1145/3603269.3604828},
+  booktitle = {Proceedings of the ACM Special Interest Group on Data Communication},
+  series    = {SIGCOMM '23}
+}
 
 ## Pre-requisites:
 
