@@ -104,11 +104,11 @@ possible capacity values for abduction as inputs and return the estimated throug
 - **full.json**: It contains a list of the video session files to be used to for evaluation. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/full.json). This file is used to identify the sessions used for training, validation and inference. In our case, we use all the sessions for training and again 
 use all the sessions for inference. Thus, full.json includes the names of all the sessions in the video_session_streams directory. The [script](./scripts/get_full.py) can be used to generate this file.
 ```
-python3 scripts/get_full.py --input_directory <input_directory>
+python3 scripts/get_full.py --input_directory <path_to_input_directory>
 ```
 - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory. It is useful to uniquely identify the input files and helps in logging the results. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/fhash.json). The [script](./scripts/get_fhash.py) can be used to generate this file.
 ```
-python3 scripts/get_fhash.py --input_directory <input_directory>
+python3 scripts/get_fhash.py --input_directory <path_to_input_directory>
 ```
 ## Contact
 Please contact cbothra@purdue.edu for any questions.
