@@ -43,6 +43,8 @@ For a given video sessions dataset collected by user, create an input directory 
     |_ fhash.json
 
    ```
+ - **train_config.yaml**: It contains various parameters needed to train a dataset.
+ - **inference_config.yaml**: It contains various parameters needed for inference using a dataset.
 
  - **video_session_streams**: It contains the observed data relevant to a video session such as download time, 
  chunk size, TCP states (when available), etc.
@@ -50,17 +52,10 @@ For a given video sessions dataset collected by user, create an input directory 
  with ground truth, and to plot figures. In emulation experiments, the INB is known and Veritas samples aspire to match 
  the INB. In real world data, we do not know the INB, hence we can make a best guess for the INB. Please note: 
  this data is not necessary for the functioning of Veritas.
-
- More details about the video_session_streams and ground_truth_capacity directories are shared [below](#input-dataset-details).
-
- - **train_config.yaml**: It contains various parameters needed to train a dataset.
- - **inference_config.yaml**: It contains various parameters needed for inference using a dataset.
-
  - **full.json**: It contains a list of the video session files to be used to for evaluation.
  - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory.
 
- For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains 
- the files and directories mentioned above.
+More details about the video_session_streams and ground_truth_capacity directories are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
 
 
 ## Using Veritas (Reproducing results from paper)
