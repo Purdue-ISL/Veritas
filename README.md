@@ -71,7 +71,7 @@ More details are shared [below](#input-dataset-details). For reference, we have 
 ## Using Veritas (Reproducing results from paper)
 The following steps run Veritas for training and inference. We use the above dataset as input, but any user input directory with above defined structure can be used as an input. Please note the commands are run from the home directory, VeritasML. 
 
-1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <timestamp>:<suffix_in_the_config_file>.
+1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <curent_timestamp>:<suffix_in_the_config_file>.
 ```
 python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
 ```
@@ -81,7 +81,7 @@ python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-C
 ```
 The location and contents of output directory look like:
 ```
-logs/transform/<timestamp>:<suffix_in_the_config_file>
+logs/transform/<current_timestamp>:<suffix_in_the_config_file>
    |_ sample
       |_<session_1>
         |_ sample_full.csv
