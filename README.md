@@ -55,7 +55,7 @@ For a given video sessions dataset collected by user, create an input directory 
  - **full.json**: It contains a list of the video session files to be used to for evaluation.
  - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory.
 
-More details about the video_session_streams and ground_truth_capacity directories are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
+More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
 
 
 ## Using Veritas (Reproducing results from paper)
