@@ -12,7 +12,7 @@ than a single point estimate, Veritas provides a range of potential outcomes ref
 that can be made from the data.
 
 This artifact accompanies the paper: *"Veritas: Answering Causal Queries from Video Streaming Traces"*. Chandan Bothra, Jianfei Gao, Sanjay Rao, and Bruno Ribeiro. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM ’23, New York, NY, USA. If you use this artifact, please cite:
-
+```
 @inproceedings{Veritas_2023,
   author    = {Bothra, Chandan and Gao, Jianfei and Rao, Sanjay and Ribeiro, Bruno},
   title     = {Veritas: Answering Causal Queries from Video Streaming Traces},
@@ -22,7 +22,7 @@ This artifact accompanies the paper: *"Veritas: Answering Causal Queries from Vi
   booktitle = {Proceedings of the ACM Special Interest Group on Data Communication},
   series    = {SIGCOMM '23}
 }
-
+```
 ## Pre-requisites:
 
 The following set up has been tested on Ubuntu 22.04.
