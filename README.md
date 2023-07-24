@@ -60,9 +60,9 @@ For a given video sessions dataset collected by user, create an input directory 
  chunk size, TCP states (when available), etc.
  - **ground_truth_capacity**: This is useful for evaluating the performance of Veritas by comparing the inferred values 
  with ground truth, and to plot figures. In emulation experiments, the INB is known and Veritas samples aspire to match 
- the INB. In real world data, we do not know the INB, hence we can make a best guess for the INB. Please note: 
- this data is not necessary for the functioning of Veritas.
- - **full.json**: It contains a list of the video session files to be used to for evaluation.
+ the INB. In real world data, we do not know the INB, hence we can make a best guess (or provide dummy values) for the INB. Please note: 
+ this data is not used by the core Veritas logic, it is only used for comparison when ground truth information is available.
+ - **full.json**: It contains a list of the video session files to be used for evaluation.
  - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory.
 
 More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
