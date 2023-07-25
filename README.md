@@ -51,7 +51,7 @@ For a given video sessions dataset collected by user, create an input directory 
  - **train_config.yaml**: It contains various parameters needed to train a dataset. Ex: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/train_config.yaml).  
  - **inference_config.yaml**: It contains various parameters needed for inference using a dataset. Ex: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/inference_config.yaml).
 
-More details about the parameters and how to choose them are available in the file.  
+More details about the parameters used in training & inference and how to choose them are available in the sample configuration files shared above.  
 
  - **video_session_streams**: It contains the observed data relevant to a video session such as download time, 
  chunk size, TCP states (when available), etc.
