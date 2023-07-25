@@ -26,4 +26,4 @@ cmd = f"python3 -u transform.py \
         --num-sample-seconds {test_config['num_sample_seconds']}"
 
 print(cmd)
-# os.system(cmd)
+os.system(cmd)
