@@ -54,13 +54,18 @@ For a given video sessions dataset collected by user, create an input directory 
 More details about the parameters used in training & inference and how to choose them are available in the sample configuration files shared above.  
 
  - **video_session_streams**: It contains the observed data relevant to a video session such as download time, 
- chunk size, TCP states (when available), etc.
+ chunk size, TCP states (when available), etc. Each line in the video session file includes information about chunk payloads in a video session. The fields included in the file are: the start time (numpy.datetime64), end time (numpy.datetime64), size (KB), trans_time/download time (ms), cwnd (number), rtt (ms),rto (ms), ssthresh (number), last_snd (s), min_rtt (ms), delivery_rate (-). Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/video_session_streams/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
  - **ground_truth_capacity**: This is useful for evaluating the performance of Veritas by comparing the inferred values 
  with ground truth, and to plot figures. In emulation experiments, the INB is known and Veritas samples aspire to match 
- the INB. In real world data, we do not know the INB, hence we can make a best guess (or provide dummy values) for the INB. Please note: 
- this data is not used by the core Veritas logic, it is only used for comparison when ground truth information is available.
- - **full.json**: It contains a list of the video session files to be used for evaluation.
- - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory.
+ the INB. In real world data, we do not know the INB, hence we can make a best guess (or provide dummy values) for the INB. Please note: this data is not used by the core Veritas logic, it is only used for comparison when ground truth information is available. Each line in a ground truth capacity file includes the ground truth bandwidth (Mbps) and start time (numpy.datetime64) for that capacity. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/ground_truth_capacity/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
+ - **full.json**: It contains a list of the video session files to be used to for evaluation. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/full.json). This file is used to identify the sessions used for training, validation and inference. In our case, we use all the sessions for training and again use all the sessions for inference. Thus, full.json includes the names of all the sessions in the video_session_streams directory. The [script](./scripts/get_full.py) can be used to generate this file.
+```
+python3 scripts/get_full.py --input_directory <path_to_input_directory>
+```
+ - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory. It is useful to uniquely identify the input files and helps in logging the results. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/fhash.json). The [script](./scripts/get_fhash.py) can be used to generate this file.
+```
+python3 scripts/get_fhash.py --input_directory <path_to_input_directory>
+```
 
 More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
 
