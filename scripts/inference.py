@@ -11,7 +11,7 @@ def parse_arguments():
 
 args = parse_arguments()
 
-config_file = os.path.join(args.input_directory, 'test_config.yaml')
+config_file = os.path.join(args.input_directory, 'inference_config.yaml')
 with open(config_file, 'r') as file:
     test_config = yaml.safe_load(file)
 
