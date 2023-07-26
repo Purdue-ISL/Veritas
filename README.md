@@ -108,7 +108,7 @@ session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Contro
 Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure].(logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png) ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
 
 ## Using the inferred INB traces
-Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings using tools such as Mahimahi. In the emulation environment, we can now directly evaluate the proposed changes, and return the answer to the what-if queries.
+Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings, i.e BBA with 5s buffer using emulation tools such as Mahimahi. In the emulation environment, we can now directly evaluate the performance of the proposed changes, and return the answer to the what-if queries.
 
 ## Parameter tuning
 As mentioned above, the details of the parameters used for training and inference are provided in the config files. They are also available by running following commands from VeritasML directory:
