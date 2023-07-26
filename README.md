@@ -74,11 +74,13 @@ The following steps run Veritas for training and inference. We use the above dat
 
 1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <curent_timestamp>:<suffix_in_the_config_file>.
   ```
-  python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
+  python3 scripts/train.py --input_directory <path_to_input_directory>
+  Ex: python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
   ```
 2. Inference: The output model from training and the parameters (number of samples, duration of samples, etc.) from the inference configuration file in the input directory are used for inference of INB traces.
   ```
-  python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
+  python3 scripts/inference.py --input_directory <path_to_input_directory> --trained_model <path_to_trained_model>
+  Ex: python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
   ```
 The location and contents of output directory look like:
   ```
@@ -124,7 +126,7 @@ We have shared other datasets (along with config files) used in our emulation ex
 - [MPC ABR, 15 s buffer](src/data/datasets/Controlled-GT-Cubic-MPC-LMH): This is used to answer what-if we change the ABR from MPC to BBA with same buffer size.
 - [BBA ABR, 15s buffer, low qualities only](src/data/datasets/Controlled-GT-Cubic-BBA-Low): This is used to answer what-if we use higher qualities in deployment.
 
-We can use the steps described in [this section](#using-veritas) to infer the INB traces and then run the counterfactual query to get the results.
+We can use the steps described in [this section](#using-veritas) (change the input directory path) to infer the INB traces and then run the counterfactual query to get the results.
    
 ## Contact
 Please contact cbothra@purdue.edu for any questions.
