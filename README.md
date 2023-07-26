@@ -120,7 +120,7 @@ One of the special parameters used by Veritas is the Domain-specific emission mo
 possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in [fit.py](fit.py) and [transform.py](transform.py) files in the VeritasML directory. To tune the parameters, one of the options is to test the deployed setting using the inferred INB traces and choose the setting with optimal performance. For ex: if we use the video sesisons data with BBA ABR and 15s buffer to infer INB traces, we can use emulate the inferred INB traces with same setting, i.e. BBA and 15s buffer and check the performance of the inferred INB traces.
 
 ## Other datasets
-We have shared other datasets used in our emulation experiments: 
+We have shared other datasets (along with config files) used in our emulation experiments: 
 - [MPC ABR, 15 s buffer](src/data/datasets/Controlled-GT-Cubic-MPC-LMH): This is used to answer: what-if we change the ABR from MPC to BBA with same buffer size.
 - [BBA ABR, 15s buffer, low qualities only](src/data/datasets/Controlled-GT-Cubic-BBA-Low): This is used to answer: what-if we use higher qualities in deployment.
    
