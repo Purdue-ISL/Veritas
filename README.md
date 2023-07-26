@@ -117,7 +117,7 @@ Training: python3 fit.py -h
 Inference: python3 transform.py -h
 ```
 One of the special parameters used by Veritas is the Domain-specific emission model (f). Veritas has the flexibility to use custom functions for the emission models of Veritas’s High-order Embedded Hidden Markov Model (HoEHMM). We pass the emission functions in the fit.py and transform.py files. These functions use the fields described in the video_session_file (except download time) and 
-possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in fit.py and transform.py in the VeritasML directory. To tune the parameters, one of the options is to test the deployed setting using the inferred INB traces and choose the setting with optimal performance. For ex: if we use the video sesisons data with BBA ABR and 15s buffer to infer INB traces, we can use emulate the inferred INB traces with same setting, i.e. BBA and 15s buffer and check the performance of the inferred INB traces.
+possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in [fit.py](fit.py) and [transform.py](transform.py) files in the VeritasML directory. To tune the parameters, one of the options is to test the deployed setting using the inferred INB traces and choose the setting with optimal performance. For ex: if we use the video sesisons data with BBA ABR and 15s buffer to infer INB traces, we can use emulate the inferred INB traces with same setting, i.e. BBA and 15s buffer and check the performance of the inferred INB traces.
 
 ## Contact
 Please contact cbothra@purdue.edu for any questions.
