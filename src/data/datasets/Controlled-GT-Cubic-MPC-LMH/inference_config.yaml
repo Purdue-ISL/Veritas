@@ -1,0 +1,15 @@
+---
+# Dataset
+suffix: Controlled-GT-Cubic-MPC-LMH
+train: full.json
+valid: full.json
+test: full.json
+
+# General parameters for the model
+seed: 42
+device: cpu
+jit: true
+
+# Samples:
+num_random_samples: 3
+num_sample_seconds: 300
