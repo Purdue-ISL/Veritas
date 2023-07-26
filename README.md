@@ -105,13 +105,19 @@ session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Contro
   3.5,3.5,3.0
   ...
   ```
-Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png) ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png).
-## Using the inferred INB traces
-The INB traces (using the sample_full.csv) can be used for bandwidth emulation using tools such as Mahimahi. In the emulation environment, we can now directly evaluate the proposed changes (change of ABR, change of qualities, etc), and return the answer to the what-if queries.
+Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure].(logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png) ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
 
-## Domain-specific emission model (f):	   
-Veritas has the flexibility to use custom functions for the emission models of Veritas’s High-order Embedded Hidden Markov Model (HoEHMM). We pass the emission functions in the fit.py and transform.py files. These functions use the fields described in the video_session_file (except download time) and 
-possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in fit.py and transform.py.
+## Using the inferred INB traces
+Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings using tools such as Mahimahi. In the emulation environment, we can now directly evaluate the proposed changes, and return the answer to the what-if queries.
+
+## Parameter tuning
+As mentioned above, the details of the parameters used for training and inference are provided in the config files. They are also available by running following commands from VeritasML directory:
+```
+Training: python3 fit.py -h
+Inference: python3 transform.py -h
+```
+One of the special parameters used by Veritas is the Domain-specific emission model (f). Veritas has the flexibility to use custom functions for the emission models of Veritas’s High-order Embedded Hidden Markov Model (HoEHMM). We pass the emission functions in the fit.py and transform.py files. These functions use the fields described in the video_session_file (except download time) and 
+possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in fit.py and transform.py in the VeritasML directory. To tune the parameters, one of the options is to test the deployed setting using the inferred INB traces and choose the setting with optimal performance. For ex: if we use the video sesisons data with BBA ABR and 15s buffer to infer INB traces, we can use emulate the inferred INB traces with same setting, i.e. BBA and 15s buffer and check the performance of the inferred INB traces.
 
 ## Contact
 Please contact cbothra@purdue.edu for any questions.
