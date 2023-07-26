@@ -93,9 +93,8 @@ The location and contents of output directory look like:
         |_<session_2.png>
         ...
   ```
-Let's say we want to sample the INB traces, for a given session, for a duration of <num_sample_seconds> and also get <num_(as defined in the inference configuration file). Further, let the transition step size during training was Each sample_full.csv is of 'd/t' lines and contains 'n' comma separated values for the inferred INB for the given 
-session. 'n' is the number of samples and 'd' is the duration of sampled INB passed in the inference configuration 
-file, while 't' is the transition step time passed during training. Example of sample_full.csv (with n=3):
+Let's say we want to sample the INB traces, for a given session, for a duration of <num_sample_seconds=300> and also get <num_random_samples=3> (as defined in the inference configuration file). Further, the transition step size set during training be 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given 
+session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
   ```
   0,1,2
   4.5,4.5,4.5
@@ -104,7 +103,9 @@ file, while 't' is the transition step time passed during training. Example of s
   3.0,3.5,3.0
   3.0,3.0,3.0
   3.5,3.5,3.0
+  ...
   ```
+Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png).
 ## Using the inferred INB traces
 The INB traces (using the sample_full.csv) can be used for bandwidth emulation using tools such as Mahimahi. In the emulation environment, we can now directly evaluate the proposed changes (change of ABR, change of qualities, etc), and return the answer to the what-if queries.
 
