@@ -67,10 +67,9 @@ More details about the parameters used in training & inference and how to choose
   python3 scripts/get_fhash.py --input_directory <path_to_input_directory>
   ```
 
-More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above.
+More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above. This [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) contains video sessions emulated using BBA ABR algorithm and a 15s client buffer. More details about emulation setup are shared in the paper.
 
-
-## Using Veritas (Reproducing results from paper)
+## Using Veritas
 The following steps run Veritas for training and inference. We use the above dataset as input, but any user input directory with above defined structure can be used as an input. Please note the commands are run from the home directory, VeritasML. 
 
 1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <curent_timestamp>:<suffix_in_the_config_file>.
@@ -90,8 +89,11 @@ The location and contents of output directory look like:
         |_<session_2>
           |_ sample_full.csv
         ...
+        |_<session_1.png>
+        |_<session_2.png>
+        ...
   ```
-Each sample_full.csv is of 'd/t' lines and contains 'n' comma separated values for the inferred INB for the given 
+Let's say we want to sample the INB traces, for a given session, for a duration of <num_sample_seconds> and also get <num_(as defined in the inference configuration file). Further, let the transition step size during training was Each sample_full.csv is of 'd/t' lines and contains 'n' comma separated values for the inferred INB for the given 
 session. 'n' is the number of samples and 'd' is the duration of sampled INB passed in the inference configuration 
 file, while 't' is the transition step time passed during training. Example of sample_full.csv (with n=3):
   ```
