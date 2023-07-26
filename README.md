@@ -121,8 +121,8 @@ possible capacity values for abduction as inputs and return the estimated throug
 
 ## Other datasets
 We have shared other datasets used in our emulation experiments: 
-- MPC ABR, 15 s buffer: This is used to answer: what-if we change the ABR from MPC to BBA with same buffer size.
-- BBA ABR, 15s buffer, low qualities only: This is used to answer: what-if we use higher qualities in deployment.
+- [MPC ABR, 15 s buffer](src/data/datasets/Controlled-GT-Cubic-MPC-LMH): This is used to answer: what-if we change the ABR from MPC to BBA with same buffer size.
+- [BBA ABR, 15s buffer, low qualities only](src/data/datasets/Controlled-GT-Cubic-BBA-Low): This is used to answer: what-if we use higher qualities in deployment.
    
 ## Contact
 Please contact cbothra@purdue.edu for any questions.
