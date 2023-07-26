@@ -95,7 +95,7 @@ The location and contents of output directory look like:
         |_<session_2.png>
         ...
   ```
-Let's say we want to sample the INB traces, for a given session, for a duration of <num_sample_seconds=300> and also get <num_random_samples=3> (as defined in the inference configuration file). Further, the transition step size set during training be 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given 
+Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training be 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given 
 session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
   ```
   0,1,2
