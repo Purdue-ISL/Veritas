@@ -1,0 +1,3 @@
+start_time,end_time,size,trans_time,cwnd,rtt,rto,ssthresh,last_snd,min_rtt,delivery_rate,bytes_sent,bytes_retrans,client_trans_time
+2020-08-25T00:26:12.840999Z,2020-08-25T00:26:12.913999Z,27.142,73.0,14.0,21.734,0.0,0.0,0.0,18.68,0.134216,0.0,0.0,0.0
+2020-08-25T00:26:12.913999Z,2020-08-25T00:26:12.975000Z,17.278,61.0,38.0,22.773,0.0,0.0,0.0,18.68,0.914193,0.0,0.0,0.0

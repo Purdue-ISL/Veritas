@@ -1,0 +1,18 @@
+---
+# Dataset
+# Naming the log directories.
+suffix: Controlled-GT-Cubic-BBA-LMH
+# List of sessions to use for training, validation and testing. 
+train: full.json
+valid: full.json
+test: full.json
+
+# General parameters for the model: such as random seed for replication of experiments, device type to run and 
+# running the emission functions using C.
+seed: 42
+device: cpu
+jit: true
+
+# Samples: the number of INB samples to generate, alongwith the duration of each sample. 
+num_random_samples: 3
+num_sample_seconds: 300
