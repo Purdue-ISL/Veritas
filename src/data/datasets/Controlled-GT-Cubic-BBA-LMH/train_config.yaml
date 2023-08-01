@@ -10,7 +10,7 @@ valid: full.json
 test: full.json
 
 # Video session parameters:
-# Max capacacity should be larger than the observed throughput in the dataset. The max. capacity, granularity of capacity 
+# Max capacity should be larger than the observed throughput in the dataset. The max. capacity, granularity of capacity 
 # unit and tranistion time unit can be as granular as possible within computational limits.
 capacity_max: 8.0
 capacity_unit: 0.5
