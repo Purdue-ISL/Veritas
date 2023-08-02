@@ -3,7 +3,7 @@ network bandwidth (INB) trace. The resulting logs are provided
 to the different schemes. Both Veritas and Baseline produce traces
 inferring INB. A video session is emulated in Setting B with the
 traces inferred by these schemes as well as the original INB trace
-<img width="289" alt="image" src="https://github.com/Purdue-ISL/Veritas/assets/19619070/65781240-dc13-40e9-a39e-5b56ead0aeb4">
+<img width="350" alt="image" src="https://github.com/Purdue-ISL/Veritas/assets/19619070/65781240-dc13-40e9-a39e-5b56ead0aeb4">
 
 ## Emulation setup
 We use the Puffer setup, with minor changes to access additional TCP variables, to run the video streaming emulation experiments. 
