@@ -18,6 +18,6 @@ ranging from 0.1 Mbps to 4 Mbps using Mahimahi.
   - Baseline: generate baseline traces and run emulation using them.
   - Veritas: use the video session streams to generate the Veritas samples and run emulation using them.
 - Step 4: Ground Truth (Setting B): Use the FCC traces to run emulation with setting B.
-- Step 5: Collection the quality metrics for Ground Truth, Baseline and Veritas and compare them.
+- Step 5: Collect the quality metrics for Ground Truth, Baseline and Veritas and compare them.
 
 
