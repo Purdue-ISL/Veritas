@@ -2,7 +2,9 @@ We use an evaluation setup similar to the figure below. A video session in Setti
 inferring INB. A video session is emulated in Setting B with the traces inferred by these schemes as well as the original INB trace
 to obtain the metrics predicted by these schemes, and ground truth. Veritas samples multiple inferred traces (five by default) for each video session, each of which are emulated.
 
-<img width="400" class="center" alt="image" src="https://github.com/Purdue-ISL/Veritas/assets/19619070/65781240-dc13-40e9-a39e-5b56ead0aeb4">
+<p align="center">
+<img width="400" alt="image" src="https://github.com/Purdue-ISL/Veritas/assets/19619070/65781240-dc13-40e9-a39e-5b56ead0aeb4">
+</p>
 
 ## Emulation setup
 We use the Puffer setup, with minor changes to access additional TCP variables, to run the video streaming emulation experiments. 
