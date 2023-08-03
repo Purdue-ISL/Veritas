@@ -106,7 +106,7 @@ Let's say for each video session, we want to sample the INB traces for a duratio
   3.5,3.5,3.0
   ...
   ```
-Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png). ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
+Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png). For more details, please check Fig 7 in the paper. ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
 
 ## Using the inferred INB traces
 Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings, i.e BBA with 5s buffer using emulation tools such as Mahimahi. In the emulation environment, we can now directly evaluate the performance of the proposed changes, and return the answer to the what-if queries.
