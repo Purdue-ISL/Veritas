@@ -67,7 +67,7 @@ More details about the parameters used in training & inference and how to choose
     python3 scripts/get_fhash.py --input_directory <path_to_input_directory>
     ```
 
-More details are shared [below](#input-dataset-details). For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above. This [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) contains video sessions emulated using BBA ABR algorithm and a 15s client buffer. More details about emulation setup are shared in the paper.
+For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) used in the paper, which contains the files and directories mentioned above. This [dataset](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH) contains video sessions emulated using BBA ABR algorithm and a 15s client buffer. More details about emulation setup are shared in the paper.
 
 ## Using Veritas
 The following steps run Veritas for training and inference. We use the above dataset as input, but any user input directory with above defined structure can be used as an input. Please note the commands are run from the home directory, VeritasML. 
@@ -95,8 +95,7 @@ The location and contents of output directory look like:
         |_<session_2.png>
         ...
   ```
-Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training be 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given 
-session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
+Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training is 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
   ```
   0,1,2
   4.5,4.5,4.5
@@ -107,7 +106,7 @@ session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Contro
   3.5,3.5,3.0
   ...
   ```
-Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure].(logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png) ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
+Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png). ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
 
 ## Using the inferred INB traces
 Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings, i.e BBA with 5s buffer using emulation tools such as Mahimahi. In the emulation environment, we can now directly evaluate the performance of the proposed changes, and return the answer to the what-if queries.
