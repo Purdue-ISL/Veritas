@@ -73,28 +73,28 @@ For reference, we have shared a [dataset](./src/data/datasets/Controlled-GT-Cubi
 The following steps run Veritas for training and inference. We use the above dataset as input, but any user input directory with above defined structure can be used as an input. Please note the commands are run from the home directory, VeritasML. 
 
 1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <curent_timestamp>:<suffix_in_the_config_file>.
-  ```
-  python3 scripts/train.py --input_directory <path_to_input_directory>
-  Ex: python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
-  ```
+    ```
+    python3 scripts/train.py --input_directory <path_to_input_directory>
+    Ex: python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
+    ```
 2. Inference: The output model from training and the parameters (number of samples, duration of samples, etc.) from the inference configuration file in the input directory are used for inference of INB traces.
-  ```
-  python3 scripts/inference.py --input_directory <path_to_input_directory> --trained_model <path_to_trained_model>
-  Ex: python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
-  ```
-The location and contents of output directory look like:
-  ```
-  logs/transform/<current_timestamp>:<suffix_in_the_config_file>
-     |_ sample
-        |_<session_1>
-          |_ sample_full.csv
-        |_<session_2>
-          |_ sample_full.csv
-        ...
-        |_<session_1.png>
-        |_<session_2.png>
-        ...
-  ```
+    ```
+    python3 scripts/inference.py --input_directory <path_to_input_directory> --trained_model <path_to_trained_model>
+    Ex: python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
+    ```
+   The location and contents of output directory look like:
+    ```
+    logs/transform/<current_timestamp>:<suffix_in_the_config_file>
+       |_ sample
+          |_<session_1>
+            |_ sample_full.csv
+          |_<session_2>
+            |_ sample_full.csv
+          ...
+          |_<session_1.png>
+          |_<session_2.png>
+          ...
+    ```
 Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training is 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
   ```
   0,1,2
