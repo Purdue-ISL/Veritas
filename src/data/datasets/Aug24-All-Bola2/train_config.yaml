@@ -9,8 +9,10 @@ train: full.json
 valid: full.json
 test: full.json
 
-# Video session parameters: Max capacity should be larger than the observed throughput in the dataset. The max. capacity, 
-# granularity of capacity unit and tranistion time unit can be as granular as possible within computational limits.
+# INB parameters: We choose the discrete step value of the inferred capacity (capacity unit in Mbps) and the time for which it 
+# should be held constant (transition unit in seconds) using these parameter. Max capacity value for the inferred INB should 
+# be larger than the observed throughput in the dataset. The max. capacity, granularity of capacity unit and transition time 
+# unit can be as granular as possible within computational limits.
 capacity_max: 250.0
 capacity_unit: 1
 transition_unit: 1
@@ -22,13 +24,8 @@ device: cpu
 num_epochs: 25
 jit: true
 
-# HMM model parameters: This relates to the initial probability, transition probability and the emission probability of 
-# the states in the HMM model. We initialise the states with uniform probability and use asymmetric Gaussian model for 
-# the transition probabilities. The smoothing parameter is used for Gaussian transition model. And we allow certain states 
-# which seem not possible using the Gaussian transtion model, within certain steps of the current state. We use different 
-# domain specific emission models based on dataset. Additional models for each component of the can be added to the system. 
-# The learning rate of the different models can be chosen by user based on computational resources and 
-# tuned using hyperparameter tuning.
+# HoEHMM model parameters: This relates to the initial probability, transition probability and the emission probability of 
+# the states in the HMM model and the associated learning rates. Most of these are standard parameters set for an HMM model. 
 initial: generic
 transition: gaussian.asym
 emission: v7
@@ -39,9 +36,14 @@ smooth: 0.05
 include_beyond: true
 trans_extra: 5
 
-# Domain emission model parameters: We add uncertainty to the emission model in the form of Gaussian white noise with 
-# a learnable variance. In our experiments we use a higher variance for the first few chunks (head) to model TCP slow start 
-# effects at the start of the session. These parameters are generally lower than the capacity step size and can be tuned per dataset.
+# Domain emission model parameters: One of the special parameters used by Veritas is the Domain-specific emission model (f). 
+# Veritas has the flexibility to use custom functions for the emission model of Veritas’s High-order Embedded Hidden Markov 
+# Model (HoEHMM). For reference, we have included a few emission functions in [fit.py](fit.py) and [transform.py](transform.py) 
+# files in the VeritasML directory. These functions use the fields described in the video_session_file (except download time) 
+# and possible capacity values for abduction as inputs and return the estimated throughput. We add uncertainty to the 
+# emission model in the form of Gaussian white noise with a learnable variance. In our experiments we use a higher variance 
+# for the first few chunks (head) to model TCP slow start effects at the start of the session. These parameters are generally 
+# lower than the capacity step size and can be tuned per dataset.
 varinit: 1
 head_by_chunk: 5
 head_by_time: 5
