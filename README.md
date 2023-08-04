@@ -111,14 +111,14 @@ Further, the output directory also contains the figures comparing the Ground Tru
 ## Using the inferred INB traces
 Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We can use the INB traces (using the sample_full.csv) and run emulation with new settings, i.e BBA with 5s buffer using emulation tools such as Mahimahi. In the emulation environment, we can now directly evaluate the performance of the proposed changes, and return the answer to the what-if queries.
 
-## Parameter tuning
+## Veritas parameters
 As mentioned above, the details of the parameters used for training and inference are provided in the config files. They are also available by running following commands from VeritasML directory:
 ```
 Training: python3 fit.py -h
 Inference: python3 transform.py -h
 ```
 One of the special parameters used by Veritas is the Domain-specific emission model (f). Veritas has the flexibility to use custom functions for the emission models of Veritas’s High-order Embedded Hidden Markov Model (HoEHMM). We pass the emission functions in the fit.py and transform.py files. These functions use the fields described in the video_session_file (except download time) and 
-possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in [fit.py](fit.py) and [transform.py](transform.py) files in the VeritasML directory. To tune the parameters, one of the options is to test the deployed setting using the inferred INB traces and choose the setting with optimal performance. For ex: if we use the video sesisons data with BBA ABR and 15s buffer to infer INB traces, we can use emulate the inferred INB traces with same setting, i.e. BBA and 15s buffer and check the performance of the inferred INB traces.
+possible capacity values for abduction as inputs and return the estimated throughput. For reference, we have included a few emission functions in [fit.py](fit.py) and [transform.py](transform.py) files in the VeritasML directory.
 
 ## Other datasets
 We have shared other datasets (along with config files) used in our emulation experiments: 
