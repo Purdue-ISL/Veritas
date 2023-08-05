@@ -16,7 +16,7 @@ with open(config_file, 'r') as file:
     test_config = yaml.safe_load(file)
 
 cmd = f"python3 -u transform.py \
-        --suffix {test_config['suffix']}-{args.trained_model} \
+        --suffix {test_config['suffix']}\
         --dataset {args.input_directory} \
         --transform {args.input_directory}/full.json \
         --seed {test_config['seed']} --device {test_config['device']} \
