@@ -48,21 +48,21 @@ For a given video sessions dataset collected by user, create an input directory 
     |_ fhash.json
 
    ```
- - **train_config.yaml**: It contains various parameters needed to train a dataset. Ex: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/train_config.yaml).  
- - **inference_config.yaml**: It contains various parameters needed for inference using a dataset. Ex: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/inference_config.yaml).
+ - **train_config.yaml**: It contains various parameters needed to train a dataset. E.g.: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/train_config.yaml).  
+ - **inference_config.yaml**: It contains various parameters needed for inference using a dataset. E.g.: [sample_file](src/data/datasets/Controlled-GT-Cubic-BBA-LMH/inference_config.yaml).
 
 More details about the parameters used in training & inference and how to choose them are available in the sample configuration files shared above.  
 
  - **video_session_streams**: It contains the observed data relevant to a video session such as download time, 
- chunk size, TCP states (when available), etc. Each line in the video session file includes information about chunk payloads in a video session. The fields included in the file are: the start time (numpy.datetime64), end time (numpy.datetime64), size (KB), trans_time/download time (ms), cwnd (number), rtt (ms),rto (ms), ssthresh (number), last_snd (s), min_rtt (ms), delivery_rate (-). Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/video_session_streams/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
+ chunk size, TCP states (when available), etc. Each line in the video session file includes information about chunk payloads in a video session. The fields included in the file are: the start time (numpy.datetime64), end time (numpy.datetime64), size (KB), trans_time/download time (ms), cwnd (number), rtt (ms),rto (ms), ssthresh (number), last_snd (s), min_rtt (ms), delivery_rate (-). E.g.: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/video_session_streams/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
  - **ground_truth_capacity**: This is useful for evaluating the performance of Veritas by comparing the inferred values 
  with ground truth, and to plot figures. In emulation experiments, the INB is known and Veritas samples aspire to match 
- the INB. In real world data, we do not know the INB, hence we can make a best guess (or provide dummy values) for the INB. Please note: this data is not used by the core Veritas logic, it is only used for comparison when ground truth information is available. Each line in a ground truth capacity file includes the ground truth bandwidth (Mbps) and start time (numpy.datetime64) for that capacity. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/ground_truth_capacity/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
- - **full.json**: It contains a list of the video session files to be used to for evaluation. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/full.json). This file is used to identify the sessions used for training, validation and inference. In our case, we use all the sessions for training and again use all the sessions for inference. Thus, full.json includes the names of all the sessions in the video_session_streams directory. The [script](./scripts/get_full.py) can be used to generate this file.
+ the INB. In real world data, we do not know the INB, hence we can make a best guess (or provide dummy values) for the INB. Please note: this data is not used by the core Veritas logic, it is only used for comparison when ground truth information is available. Each line in a ground truth capacity file includes the ground truth bandwidth (Mbps) and start time (numpy.datetime64) for that capacity. E.g.: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/ground_truth_capacity/fake_trace_10013_http---edition.cnn.com_76823454_cbs_6).
+ - **full.json**: It contains a list of the video session files to be used to for evaluation. E.g.: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/full.json). This file is used to identify the sessions used for training, validation and inference. In our case, we use all the sessions for training and again use all the sessions for inference. Thus, full.json includes the names of all the sessions in the video_session_streams directory. The [script](./scripts/get_full.py) can be used to generate this file.
     ```
     python3 scripts/get_full.py --input_directory <path_to_input_directory>
     ```
- - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory. It is useful to uniquely identify the input files and helps in logging the results. Ex: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/fhash.json). The [script](./scripts/get_fhash.py) can be used to generate this file.
+ - **fhash.json**: It contains hash value for each file in the video_session_streams and ground_truth_capacity directory. It is useful to uniquely identify the input files and helps in logging the results. E.g.: [sample_file](./src/data/datasets/Controlled-GT-Cubic-BBA-LMH/fhash.json). The [script](./scripts/get_fhash.py) can be used to generate this file.
     ```
     python3 scripts/get_fhash.py --input_directory <path_to_input_directory>
     ```
@@ -75,12 +75,12 @@ The following steps run Veritas for training and inference. We use the above dat
 1. Training: The parameters (general, HMM, video sessions, etc.) from training configuration file in the input directory are used for training. The trained model is saved in the logs/fit/ directory with the name: <curent_timestamp>:<suffix_in_the_config_file>.
     ```
     python3 scripts/train.py --input_directory <path_to_input_directory>
-    Ex: python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
+    E.g.: python3 scripts/train.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH
     ```
 2. Inference: The output model from training and the parameters (number of samples, duration of samples, etc.) from the inference configuration file in the input directory are used for inference of INB traces.
     ```
     python3 scripts/inference.py --input_directory <path_to_input_directory> --trained_model <path_to_trained_model>
-    Ex: python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
+    E.g.: python3 scripts/inference.py --input_directory src/data/datasets/Controlled-GT-Cubic-BBA-LMH --trained_model <path_to_trained_model>
     ```
    The location and contents of output directory look like:
     ```
@@ -95,7 +95,7 @@ The following steps run Veritas for training and inference. We use the above dat
           |_<session_2.png>
           ...
     ```
-Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training is 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given session in each line. Ex: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
+Let's say for each video session, we want to sample the INB traces for a duration of <num_sample_seconds>=300s and also get <num_random_samples>=3 (as defined in the inference configuration file). Further, the transition step size (the duration for which the INB remains constant) set during training is 5s. Then, each sample_full.csv has 300/5 = 60 lines and contains '3' comma separated values for the inferred INB for the given session in each line. E.g.: [sample_full.csv](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6/sample_full.csv).  
   ```
   0,1,2
   4.5,4.5,4.5
@@ -106,7 +106,7 @@ Let's say for each video session, we want to sample the INB traces for a duratio
   3.5,3.5,3.0
   ...
   ```
-Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. Ex: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png). For more details, please check Fig 7 in the paper. ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
+Further, the output directory also contains the figures comparing the Ground Truth, Baseline (defined in the paper) and Veritas inferred INB traces. E.g.: [sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png). For more details, please check Fig 7 in the paper. ![sample figure](logs/transform/20230725122810:Controlled-GT-Cubic-BBA-LMH-logs/fit/20230725115631:Controlled-GT-Cubic-BBA-LMH-gaussian.asym-v10/sample/000.fake_trace_10013_http---edition.cnn.com_76823454_cbs_6.png)
 
 ## Using the inferred INB traces
 The above video session dataset used BBA ABR with 15s client buffer size. Let's say we want to know the performance of BBA ABR if the client buffer size was changed from 15s to 5s. We use the INB traces (using the sample_full.csv) and run emulation with new settings, i.e BBA with 5s buffer using emulation tools such as Mahimahi. In the emulation environment, we now directly evaluate the performance of the proposed changes, and return the answer to the what-if queries.
